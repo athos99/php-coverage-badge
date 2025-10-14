@@ -1,6 +1,8 @@
 name: 'php-coverage-badge'
-author: 'Michel Bobillier athos99@bluewin.ch'
 description: 'PHP-Coverage-Badge is a gitaction for creating an SVG coverage badge from a PHP Clover XML file.'
+branding: 
+  icon: 'book-open'
+  color: 'green'
 inputs:
   report:
     description: 'The path to the report file.'
