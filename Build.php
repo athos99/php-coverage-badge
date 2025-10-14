@@ -52,7 +52,7 @@ class Build
         $color = $coverage >= $limit ? '#4c1' : '#e54';
         $template = file_get_contents('flat.svg');
         $template = str_replace('{{ name }}', $name, $template);
-        $template = str_replace('{{ total }}', $coverage, $template);
+        $template = str_replace('{{ coverage }}', $coverage, $template);
         $template = str_replace('{{ color }}', $color, $template);
         file_put_contents($outputFile, $template);
     }
