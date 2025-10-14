@@ -39,7 +39,7 @@ inputs:
     required: false
     default: 'false'
   repo_token:
-    description: 'Token to push the badge into the repository. 
+    description: 'Token to push the badge into the repository.'
     required: false
     default: 'NOT_SUPPLIED'
   commit_message:
