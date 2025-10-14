@@ -64,17 +64,17 @@ runs:
     - name: build badge
       shell: bash
       run: |
-        php Build.php --report=${{ inputs.report }} \
-          --report-type=${{ inputs.report_type }} \ 
-          --coverage-line-badge-name=${{ inputs.coverage_line_badge_name }} \
-          --coverage-branche-badge-name=${{ inputs.coverage_branche_badge_name }} \
-          --coverage-line-badge-path=${{ inputs.coverage_line_badge_path }} \
-          --coverage-branche-badge-path=${{ inputs.coverage_branche_badge_path }}
-      #     --coverage-line-percent-ok=${{ inputs.coverage_line_percent_ok }} \
-      #     --coverage-branch-percent-ok=${{ inputs.coverage_branch_percent_ok }} \
-      #     --push-badge=${{ inputs.push_badge }} \
-      #     --repo-token=${{ inputs.repo_token }} \
-      #     --commit-message=${{ inputs.commit_message }} \
-      #     --commit-email=${{ inputs.commit_email }}
+        php Build.php --report='${{ inputs.report }}' \
+          --report-type='${{ inputs.report_type }}' \ 
+          --coverage-line-badge-name='${{ inputs.coverage_line_badge_name }}' \
+          --coverage-branche-badge-name='${{ inputs.coverage_branche_badge_name }}' \
+          --coverage-line-badge-path='${{ inputs.coverage_line_badge_path }}' \
+          --coverage-branche-badge-path='${{ inputs.coverage_branche_badge_path }}' \
+          --coverage-line-percent-ok='${{ inputs.coverage_line_percent_ok }}' \
+          --coverage-branch-percent-ok='${{ inputs.coverage_branch_percent_ok }}' \
+          --push-badge='${{ inputs.push_badge }}' \
+          --repo-token='${{ inputs.repo_token }}' \
+          --commit-message='${{ inputs.commit_message }}' \
+          --commit-email='${{ inputs.commit_email }}'
 
 
