@@ -21,7 +21,7 @@ jobs:
           coverage_line_badge_name: 'line coverage'
           coverage_branche_badge_name: 'branche coverage'
           coverage_line_badge_path: 'test/clover_coverage_line.svg'
-          coverage_branche_badge_path: 'test/clover_coverage_breanche.svg'
+          coverage_branche_badge_path: 'test/clover_coverage_branche.svg'
           coverage_line_percent_ok: '80'
           coverage_branch_percent_ok: '70'
           push_badge: 'true'
@@ -36,13 +36,29 @@ jobs:
           report_type: 'cobertura'
           coverage_line_badge_name: 'line coverage'
           coverage_branche_badge_name: 'branche coverage'
-          coverage_line_badge_path: 'cobertura_coverage_line.svg'
-          coverage_branche_badge_path: 'cobertura_coverage_breanche.svg'
+          coverage_line_badge_path: 'test/cobertura_coverage_line.svg'
+          coverage_branche_badge_path: 'test/cobertura_coverage_branche.svg'
           coverage_line_percent_ok: '99'
           coverage_branch_percent_ok: '95'
           push_badge: 'false'
 
 
+      - name: archive
+        run: git config --local user.name actions-user
+      - run: git config --local user.email "actions@github.com" 
+      - run: git add test/clover_coverage_line.svg
+      - run: git add test/clover_coverage_branche.svg
+      - run: git add test/cobertura_coverage_line.svg
+      - run: git add test/cobertura_coverage_branche.svg
 
+      - run: git commit -m "chore':' add coverage badges" 
+        
+      - name: Push changes # push the output folder to your repo
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          force: true
+
+  
 
 
