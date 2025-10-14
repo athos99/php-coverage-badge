@@ -1,4 +1,4 @@
-name: php-coverage-badge
+name: test
 on: push
 jobs:
   test:
