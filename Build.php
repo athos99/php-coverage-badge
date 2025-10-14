@@ -9,7 +9,7 @@ class Metric
 class Build
 {
 
-  private function getCloverMetrics(string $cloverMetricsPath): Metric
+    private function getCloverMetrics(string $cloverMetricsPath): Metric
     {
 
 
@@ -20,10 +20,10 @@ class Build
         }
         $metricsAttributes = $reportMetrics->attributes();
         $metric = new Metric();
-        $metric->branchesValid = intval( $metricsAttributes->conditionals);
-        $metric->branchesCovered = intval( $metricsAttributes->coveredconditionals);
+        $metric->branchesValid = intval($metricsAttributes->conditionals);
+        $metric->branchesCovered = intval($metricsAttributes->coveredconditionals);
         $metric->linesValid = intval($metricsAttributes->statements);
-        $metric->linesCovered = intval( $metricsAttributes->coveredstatements);
+        $metric->linesCovered = intval($metricsAttributes->coveredstatements);
         return $metric;
     }
 
@@ -36,10 +36,10 @@ class Build
             throw new \RuntimeException('Could not find metrics in cobertura report.');
         }
         $metric = new Metric();
-        $metric->branchesValid = intval( $metricsAttributes->{'branches-valid'});
-        $metric->branchesCovered = intval( $metricsAttributes->{'branches-covered'});
-        $metric->linesValid = intval( $metricsAttributes->{'lines-valid'});
-        $metric->linesCovered = intval( $metricsAttributes->{'lines-covered'});
+        $metric->branchesValid = intval($metricsAttributes->{'branches-valid'});
+        $metric->branchesCovered = intval($metricsAttributes->{'branches-covered'});
+        $metric->linesValid = intval($metricsAttributes->{'lines-valid'});
+        $metric->linesCovered = intval($metricsAttributes->{'lines-covered'});
         return $metric;
     }
 
@@ -50,7 +50,7 @@ class Build
         $coverage = ($valid === 0) ? 100.0 : number_format(($covered * 100) / $valid, 2, '.');
 
         $color = $coverage >= $limit ? '#4c1' : '#e54';
-        $template = file_get_contents(__DIR__ . 'flat.svg');
+        $template = file_get_contents('flat.svg');
         $template = str_replace('{{ name }}', $name, $template);
         $template = str_replace('{{ total }}', $coverage, $template);
         $template = str_replace('{{ color }}', $color, $template);
@@ -83,7 +83,7 @@ class Build
         $coverageLineBadgePath = $options['coverage-line-badge-path'] ?? 'coverage_line.svg';
         $coverageBrancheBadgePath = $options['coverage-branche-badge-path'] ?? 'coverage_breanche.svg';
         $coverageLinePercentOk = floatval($options['coverage-line-percent-ok'] ?? '80');
-        $coverageBranchPercentOk = floatval ($options['coverage-branch-percent-ok'] ?? '70');
+        $coverageBranchPercentOk = floatval($options['coverage-branch-percent-ok'] ?? '70');
         $pushBadge = filter_var($options['push-badge'] ?? 'false', FILTER_VALIDATE_BOOLEAN);
         $repoToken = $options['repo-token'] ?? '';
         $commitMessage = $options['commit-message'] ?? 'Update coverage badges';
