@@ -63,7 +63,7 @@ runs:
         extensions: mbstring, xml
     - name: build badge
       shell: bash
-      run: php ./build.php
+      run: php Build.php
       # run: |
       #   php build.php --report=${{ inputs.report }} \
       #     --report-type=${{ inputs.report_type }} \
