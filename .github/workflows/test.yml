@@ -1,4 +1,4 @@
-name: phpstan
+name: php-coverage-badge
 on: push
 jobs:
   phpstan:
