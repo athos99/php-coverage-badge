@@ -9,7 +9,7 @@ class Metric
 class Build
 {
 
-    private function getCloverMetrics(string $cloverMetricsPath): Metric
+  private function getCloverMetrics(string $cloverMetricsPath): Metric
     {
 
 
@@ -20,10 +20,10 @@ class Build
         }
         $metricsAttributes = $reportMetrics->attributes();
         $metric = new Metric();
-        $metric->branchesValid = (int) $metricsAttributes->conditionals;
-        $metric->branchesCovered = (int) $metricsAttributes->coveredconditionals;
-        $metric->linesValid = (int) $metricsAttributes->statements;
-        $metric->linesCovered = (int) $metricsAttributes->coveredstatements;
+        $metric->branchesValid = intval( $metricsAttributes->conditionals);
+        $metric->branchesCovered = intval( $metricsAttributes->coveredconditionals);
+        $metric->linesValid = intval($metricsAttributes->statements);
+        $metric->linesCovered = intval( $metricsAttributes->coveredstatements);
         return $metric;
     }
 
@@ -36,14 +36,16 @@ class Build
             throw new \RuntimeException('Could not find metrics in cobertura report.');
         }
         $metric = new Metric();
-        $metric->branchesValid = (int) $metricsAttributes->{'branches-valid'};
-        $metric->branchesCovered = (int) $metricsAttributes->{'branches-covered'};
-        $metric->linesValid = (int) $metricsAttributes->{'lines-valid'};
-        $metric->linesCovered = (int) $metricsAttributes->{'lines-covered'};
+        $metric->branchesValid = intval( $metricsAttributes->{'branches-valid'});
+        $metric->branchesCovered = intval( $metricsAttributes->{'branches-covered'});
+        $metric->linesValid = intval( $metricsAttributes->{'lines-valid'});
+        $metric->linesCovered = intval( $metricsAttributes->{'lines-covered'});
         return $metric;
     }
 
-    private function buildBadge(int $name, int $covered, int $valid, float $limit, string $outputFile): void
+
+
+    private function buildBadge(string $name, int $covered, int $valid, float $limit, string $outputFile): void
     {
         $coverage = ($valid === 0) ? 100.0 : number_format(($covered * 100) / $valid, 2, '.');
 
@@ -80,8 +82,8 @@ class Build
         $coverageBrancheBadgeName = $options['coverage-branche-badge-name'] ?? 'branche coverage';
         $coverageLineBadgePath = $options['coverage-line-badge-path'] ?? 'coverage_line.svg';
         $coverageBrancheBadgePath = $options['coverage-branche-badge-path'] ?? 'coverage_breanche.svg';
-        $coverageLinePercentOk = (float) ($options['coverage-line-percent-ok'] ?? '80');
-        $coverageBranchPercentOk = (float) ($options['coverage-branch-percent-ok'] ?? '70');
+        $coverageLinePercentOk = floatval($options['coverage-line-percent-ok'] ?? '80');
+        $coverageBranchPercentOk = floatval ($options['coverage-branch-percent-ok'] ?? '70');
         $pushBadge = filter_var($options['push-badge'] ?? 'false', FILTER_VALIDATE_BOOLEAN);
         $repoToken = $options['repo-token'] ?? '';
         $commitMessage = $options['commit-message'] ?? 'Update coverage badges';
