@@ -1,7 +1,7 @@
 name: php-coverage-badge
 on: push
 jobs:
-  phpstan:
+  test:
     permissions:
       pull-requests: write
       contents: write           
