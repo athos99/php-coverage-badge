@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: clover report
-        uses: athos99/php-coverage-badge@v1
+        uses: athos99/php-coverage-badge@v1.0.0
         with:
           report: 'clover.xml'
           report_type: 'clover'
