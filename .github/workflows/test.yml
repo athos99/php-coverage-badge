@@ -30,7 +30,7 @@ jobs:
           commit_email: 'test@noreply.github.com'
 
       - name: cobertura report
-        uses: athos99/php-coverage-badge@v1.0.0
+        uses: athos99/php-coverage-badge@v1
         with:
           report: 'cobertura.xml'
           report_type: 'cobertura'
