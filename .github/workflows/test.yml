@@ -16,7 +16,7 @@ jobs:
       - name: clover report
         uses: athos99/php-coverage-badge@v1
         with:
-          report: 'clover.xml'
+          report: 'test/clover.xml'
           report_type: 'clover'
           coverage_line_badge_name: 'line coverage'
           coverage_branche_badge_name: 'branche coverage'
@@ -32,7 +32,7 @@ jobs:
       - name: cobertura report
         uses: athos99/php-coverage-badge@v1
         with:
-          report: 'cobertura.xml'
+          report: 'test/cobertura.xml'
           report_type: 'cobertura'
           coverage_line_badge_name: 'line coverage'
           coverage_branche_badge_name: 'branche coverage'
