@@ -1,0 +1,42 @@
+name: phpstan
+on: push
+jobs:
+  phpstan:
+    permissions:
+      pull-requests: write
+      contents: write           
+    runs-on: ubuntu-latest
+    steps:
+      - name: clover report
+        uses: athos99/php-coverage-badge
+        with:
+          report: 'clover.xml'
+          report_type: 'clover'
+          coverage_line_badge_name: 'line coverage'
+          coverage_branche_badge_name: 'branche coverage'
+          coverage_line_badge_path: 'test/clover_coverage_line.svg'
+          coverage_branche_badge_path: 'test/clover_coverage_breanche.svg'
+          coverage_line_percent_ok: '80'
+          coverage_branch_percent_ok: '70'
+          push_badge: 'true'
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          commit_message: 'Update code coverages badges'
+          commit_email: 'test@noreply.github.com'
+
+      - name: cobertura report
+        uses: athos99/php-coverage-badge
+        with:
+          report: 'cobertura.xml'
+          report_type: 'cobertura'
+          coverage_line_badge_name: 'line coverage'
+          coverage_branche_badge_name: 'branche coverage'
+          coverage_line_badge_path: 'cobertura_coverage_line.svg'
+          coverage_branche_badge_path: 'cobertura_coverage_breanche.svg'
+          coverage_line_percent_ok: '99'
+          coverage_branch_percent_ok: '95'
+          push_badge: 'false'
+
+
+
+
+

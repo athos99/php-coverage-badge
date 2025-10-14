@@ -1,0 +1,79 @@
+name: 'php-coverage-badge'
+author: 'Michel Bobillier athos99@bluewin.ch'
+description: 'PHP-Coverage-Badge is a gitaction for creating an SVG coverage badge from a PHP Clover XML file.'
+inputs:
+  report:
+    description: 'The path to the report file.'
+    required: false
+    default: 'clover.xml'
+  report_type:
+    description: 'The type of the generated report. Currently supported: clover, cobertura.'
+    required: false
+    default: 'clover'
+  coverage_line_badge_name:
+    description: 'The name of the line coverage badge'
+    required: false
+    default: 'line coverage'
+  coverage_branche_badge_name:
+    description: 'The name of the branch coverage badge'
+    required: false
+    default: 'branche coverage'
+  coverage_line_badge_path:
+    description: 'The path of the line coverage badge'
+    required: false
+    default: 'coverage_line.svg'
+  coverage_branche_badge_path:
+    description: 'The path of the branch coverage badge'
+    required: false
+    default: 'coverage_breanche.svg'
+  coverage_line_percent_ok:
+    description: 'Acceptable limit of coverage line percent'
+    required: false
+    default: '80'
+  coverage_branch_percent_ok:
+    description: 'Acceptable limit of coverage barnch percent'
+    required: false
+    default: '70'
+  push_badge:
+    description: 'Defines whether the badges will be committed and pushed to the repository.'
+    required: false
+    default: 'false'
+  repo_token:
+    description: 'Token to push the badge into the repository. 
+    required: false
+    default: 'NOT_SUPPLIED'
+  commit_message:
+    description: 'Commit message that will be used to commit .'
+    required: false
+    default: 'Update code coverages badges'
+  commit_email:
+    description: 'Email that will be used for the commit.'
+    required: false
+    default: 'actions@users.noreply.github.com'
+
+
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup PHP with tools
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.3'
+        extensions: mbstring, xml
+    - name: build badge
+      run: |
+        php build.php \
+          --report=${{ inputs.report }} \
+          --report-type=${{ inputs.report_type }} \
+          --coverage-line-badge-name='${{ inputs.coverage_line_badge_name }}' \
+          --coverage-branche-badge-name='${{ inputs.coverage_branche_badge_name }}' \
+          --coverage-line-badge-path=${{ inputs.coverage_line_badge_path }} \
+          --coverage-branche-badge-path=${{ inputs.coverage_branche_badge_path }} \
+          --coverage-line-percent-ok=${{ inputs.coverage_line_percent_ok }} \
+          --coverage-branch-percent-ok=${{ inputs.coverage_branch_percent_ok }} \
+          --push-badge=${{ inputs.push_badge }} \
+          --repo-token=${{ inputs.repo_token }} \
+          --commit-message='${{ inputs.commit_message }}' \
+          --commit-email='${{ inputs.commit_email }}'
+
