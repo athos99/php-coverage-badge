@@ -51,7 +51,7 @@ jobs:
       - run: git add test/cobertura_coverage_line.svg
       - run: git add test/cobertura_coverage_branche.svg
 
-      - run: git commit -m "chore':' add coverage badges" 
+      - run: git commit -m "chore':' add coverage badges"  || true
         
       - name: Push changes # push the output folder to your repo
         uses: ad-m/github-push-action@master
