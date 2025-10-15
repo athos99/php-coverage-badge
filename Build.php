@@ -47,7 +47,7 @@ class Build
 
     private function buildBadge(string $name, int $width, int $covered, int $valid, float $limit, string $outputFile): void
     {
-        $coverage = ($valid === 0) ? 100.0 : number_format(($covered * 100) / $valid, 2, '.');
+        $coverage = ($valid === 0) ? 100.0 : number_format(($covered * 100) / $valid, 1, '.');
 
         $color = $coverage >= $limit ? '#4c1' : '#e54';
         $template = file_get_contents('template.svg');
@@ -83,8 +83,8 @@ class Build
         $reportType = $options['report-type'] ?? 'clover';
         $coverageLineBadgeName = $options['coverage-line-badge-name'] ?? 'line coverage';
         $coverageBrancheBadgeName = $options['coverage-branche-badge-name'] ?? 'branche coverage';
-        $coverageLineBadgeWidth = intval($options['coverage-line-badge-width'] ?? 500);
-        $coverageBrancheBadgeWidth = intval($options['coverage-branche-badge-width'] ?? 500);
+        $coverageLineBadgeWidth = intval($options['coverage-line-badge-width'] ?? 3000);
+        $coverageBrancheBadgeWidth = intval($options['coverage-branche-badge-width'] ?? 2000);
         $coverageLineBadgePath = $options['coverage-line-badge-path'] ?? 'coverage_line.svg';
         $coverageBrancheBadgePath = $options['coverage-branche-badge-path'] ?? 'coverage_breanche.svg';
         $coverageLinePercentOk = floatval($options['coverage-line-percent-ok'] ?? '80');
