@@ -16,11 +16,11 @@ inputs:
   coverage_line_badge_name:
     description: 'The name of the line coverage badge'
     required: false
-    default: 'line coverage'
+    default: 'Line coverage'
   coverage_branche_badge_name:
     description: 'The name of the branch coverage badge'
     required: false
-    default: 'branche coverage'
+    default: 'Branche coverage'
   coverage_line_badge_path:
     description: 'The path of the line coverage badge'
     required: false

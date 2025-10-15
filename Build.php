@@ -78,11 +78,8 @@ class Build
     private function buildBadge(string $name,  int $covered, int $valid, float $limit, string $outputFile): void
     {
         $coverage = (($valid === 0) ? 100.0 : number_format(($covered * 100) / $valid, 1, '.')) . '%';
-
         $color = $coverage >= $limit ? '#4c1' : '#e54';
         $template = file_get_contents('template.svg');
-
-
         $coverageLength = $this->calculateTextLength110($coverage);
         $nameTextLength = $this->calculateTextLength110($name);
         $rightWidth = ceil($coverageLength / 10) + 10;
@@ -92,12 +89,6 @@ class Build
         $rightCenter = 10 * $leftWidth + $rightWidth * 5 - 10;
         # The +10 below is for an extra buffer on left end of badge
         $leftCenter = 10 + $leftWidth * 5;
-
-
-
-
-
-
         $template = str_replace('{{ name }}', $name, $template);
         $template = str_replace('{{ nameTextLength }}', $nameTextLength, $template);
         $template = str_replace('{{ coverage }}', $coverage, $template);
@@ -108,11 +99,6 @@ class Build
         $template = str_replace('{{ rightCenter }}', $rightCenter, $template);
         $template = str_replace('{{ leftWidth }}', $leftWidth, $template);
         $template = str_replace('{{ leftCenter }}', $leftCenter, $template);
-
-
-
-
-
         file_put_contents($outputFile, $template);
     }
 
@@ -133,7 +119,6 @@ class Build
             "repo-token::",         // Optional value
             "commit-message::",     // Optional value
             "commit-email::",       // Optional value
-
         ];
 
         $options = getopt("", $longopts);
