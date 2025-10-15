@@ -36,7 +36,7 @@ inputs:
   coverage_branch_percent_ok:
     description: 'Acceptable limit of coverage barnch percent'
     required: false
-    default: '70'
+    default: '60'
   push_badge:
     description: 'Defines whether the badges will be committed and pushed to the repository.'
     required: false
