@@ -45,15 +45,16 @@ class Build
 
 
 
-    private function buildBadge(string $name, int $covered, int $valid, float $limit, string $outputFile): void
+    private function buildBadge(string $name, int $width, int $covered, int $valid, float $limit, string $outputFile): void
     {
         $coverage = ($valid === 0) ? 100.0 : number_format(($covered * 100) / $valid, 2, '.');
 
         $color = $coverage >= $limit ? '#4c1' : '#e54';
-        $template = file_get_contents('flat.svg');
+        $template = file_get_contents('template.svg');
         $template = str_replace('{{ name }}', $name, $template);
         $template = str_replace('{{ coverage }}', $coverage, $template);
         $template = str_replace('{{ color }}', $color, $template);
+        $template = str_replace('{{ width }}', $width, $template);
         file_put_contents($outputFile, $template);
     }
 
@@ -64,6 +65,8 @@ class Build
             "report-type::",        // Optional value
             "coverage-line-badge-name::", // Optional value
             "coverage-branche-badge-name::", // Optional value
+            "coverage-line-badge-width::", // Optional value
+            "coverage-branche-badge-width::", // Optional value
             "coverage-line-badge-path::", // Optional value
             "coverage-branche-badge-path::", // Optional value
             "coverage-line-percent-ok::", // Optional value
@@ -80,6 +83,8 @@ class Build
         $reportType = $options['report-type'] ?? 'clover';
         $coverageLineBadgeName = $options['coverage-line-badge-name'] ?? 'line coverage';
         $coverageBrancheBadgeName = $options['coverage-branche-badge-name'] ?? 'branche coverage';
+        $coverageLineBadgeWidth = intval($options['coverage-line-badge-width'] ?? 500);
+        $coverageBrancheBadgeWidth = intval($options['coverage-branche-badge-width'] ?? 500);
         $coverageLineBadgePath = $options['coverage-line-badge-path'] ?? 'coverage_line.svg';
         $coverageBrancheBadgePath = $options['coverage-branche-badge-path'] ?? 'coverage_breanche.svg';
         $coverageLinePercentOk = floatval($options['coverage-line-percent-ok'] ?? '80');
@@ -100,6 +105,7 @@ class Build
 
         $this->buildBadge(
             $coverageLineBadgeName,
+            $coverageLineBadgeWidth,
             $metric->linesCovered,
             $metric->linesValid,
             $coverageLinePercentOk,
@@ -108,6 +114,7 @@ class Build
 
         $this->buildBadge(
             $coverageBrancheBadgeName,
+            $coverageBrancheBadgeWidth,
             $metric->branchesCovered,
             $metric->branchesValid,
             $coverageBranchPercentOk,
