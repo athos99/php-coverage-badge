@@ -63,8 +63,10 @@ runs:
         extensions: mbstring, xml
     - name: build badge
       shell: bash
+      env:
+        INPUT_REPORT: "${{ inputs.report }}"
       run: |
-        php Build.php --report="${{ inputs.report }}" \
+        php Build.php --report=$INPUT_REPORT \
           --report-type="${{ inputs.report_type }}" \
           --coverage-line-badge-name="${{ inputs.coverage_line_badge_name }}" \
           --coverage-branche-badge-name="${{ inputs.coverage_branche_badge_name }}" \
