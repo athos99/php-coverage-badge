@@ -56,6 +56,10 @@ runs:
         persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
         fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.        
         repository: athos99/php-coverage-badge
+        path: php-coverage-badge
+        sparse-checkout: |
+          Build.php
+
     - name: liste files 2
       run: ls -al
       shell: bash
@@ -84,7 +88,7 @@ runs:
         INPUT_COVERAGE_LINE_PERCENT_OK: "${{    inputs.coverage_line_percent_ok }}"
         INPUT_COVERAGE_BRANCH_PERCENT_OK: "${{ inputs.coverage_branch_percent_ok }}"
       run: |
-        php Build.php --report="$INPUT_REPORT" \
+        php php-coverage-badge/Build.php --report="$INPUT_REPORT" \
           --report-type="$INPUT_REPORT_TYPE" \
           --coverage-line-badge-name="$INPUT_COVERAGE_LINE_BADGE_NAME"\
           --coverage-branch-badge-name="$INPUT_COVERAGE_BRANCH_BADGE_NAME" \
