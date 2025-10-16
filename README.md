@@ -3,7 +3,7 @@
 
 # php-coverage-badge
 
-PHP-Coverage-Badge is a GitAction for creating SVG coverage badges. It parses XML report files such as Clover or Corbertura 
+PHP-Coverage-Badge is a GitAction for creating SVG coverage badges. It parses XML report files such as Clover or Cobertura 
 and creates badges based on the coverage of lines and branches of the code.
 
 ## This is the type of badge generated
