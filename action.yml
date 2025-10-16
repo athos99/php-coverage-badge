@@ -17,15 +17,15 @@ inputs:
     description: 'The name of the line coverage badge'
     required: false
     default: 'Line coverage'
-  coverage_branche_badge_name:
+  coverage_branch_badge_name:
     description: 'The name of the branch coverage badge'
     required: false
-    default: 'Branche coverage'
+    default: 'Branch coverage'
   coverage_line_badge_path:
     description: 'The path of the line coverage badge'
     required: false
     default: 'coverage_line.svg'
-  coverage_branche_badge_path:
+  coverage_branch_badge_path:
     description: 'The path of the branch coverage badge'
     required: false
     default: 'coverage_breanche.svg'
@@ -67,18 +67,18 @@ runs:
         INPUT_REPORT: "${{ inputs.report }}"
         INPUT_REPORT_TYPE: "${{ inputs.report_type }}"
         INPUT_COVERAGE_LINE_BADGE_NAME: "${{ inputs.coverage_line_badge_name }}"
-        INPUT_COVERAGE_BRANCHE_BADGE_NAME: "${{ inputs.coverage_branche_badge_name }}"
+        INPUT_COVERAGE_BRANCH_BADGE_NAME: "${{ inputs.coverage_branch_badge_name }}"
         INPUT_COVERAGE_LINE_BADGE_PATH: "${{ inputs.coverage_line_badge_path }}"
-        INPUT_COVERAGE_BRANCHE_BADGE_PATH: "${{ inputs.coverage_branch_badge_path }}"
+        INPUT_COVERAGE_BRANCH_BADGE_PATH: "${{ inputs.coverage_branch_badge_path }}"
         INPUT_COVERAGE_LINE_PERCENT_OK: "${{    inputs.coverage_line_percent_ok }}"
         INPUT_COVERAGE_BRANCH_PERCENT_OK: "${{ inputs.coverage_branch_percent_ok }}"
       run: |
         php Build.php --report="$INPUT_REPORT" \
           --report-type="$INPUT_REPORT_TYPE" \
           --coverage-line-badge-name="$INPUT_COVERAGE_LINE_BADGE_NAME"\
-          --coverage-branche-badge-name="$INPUT_COVERAGE_BRANCHE_BADGE_NAME" \
+          --coverage-branch-badge-name="$INPUT_COVERAGE_BRANCH_BADGE_NAME" \
           --coverage-line-badge-path="$INPUT_COVERAGE_LINE_BADGE_PATH" \
-          --coverage-branche-badge-path="$INPUT_COVERAGE_BRANCHE_BADGE_PATH" \
+          --coverage-branch-badge-path="$INPUT_COVERAGE_BRANCH_BADGE_PATH" \
           --coverage-line-percent-ok="${INPUT_COVERAGE_LINE_PERCENT_OK}" \
           --coverage-branch-percent-ok="${INPUT_COVERAGE_BRANCH_PERCENT_OK}" \
 

@@ -19,7 +19,7 @@ jobs:
           report: 'test/clover.xml'
           report_type: 'clover'
           coverage_line_badge_path: 'test/clover_coverage_line.svg'
-          coverage_branche_badge_path: 'test/clover_coverage_branche.svg'
+          coverage_branch_badge_path: 'test/clover_coverage_branch.svg'
 
       - name: cobertura report
         uses: athos99/php-coverage-badge@main
@@ -27,9 +27,9 @@ jobs:
           report: 'test/cobertura.xml'
           report_type: 'cobertura'
           coverage_line_badge_name: 'corbertura line coverage'
-          coverage_branche_badge_name: 'corbertura branche coverage'
+          coverage_branch_badge_name: 'corbertura branch coverage'
           coverage_line_badge_path: 'test/cobertura_coverage_line.svg'
-          coverage_branche_badge_path: 'test/cobertura_coverage_branche.svg'
+          coverage_branch_badge_path: 'test/cobertura_coverage_branch.svg'
           coverage_line_percent_ok: '99'
           coverage_branch_percent_ok: '95'
 
@@ -38,9 +38,9 @@ jobs:
         run: git config --local user.name actions-user
       - run: git config --local user.email "actions@github.com" 
       - run: git add test/clover_coverage_line.svg
-      - run: git add test/clover_coverage_branche.svg
+      - run: git add test/clover_coverage_branch.svg
       - run: git add test/cobertura_coverage_line.svg
-      - run: git add test/cobertura_coverage_branche.svg
+      - run: git add test/cobertura_coverage_branch.svg
       - run: 'git commit -m "chore: add coverage badges"  || true'
         
       - name: Push changes # push the output folder to your repo

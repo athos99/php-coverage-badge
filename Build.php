@@ -12047,30 +12047,26 @@ class Build
     public function run()
     {
         global $argv;
-        
-        var_dump($argv);
-
         $longopts  = [
             "report::",             // Optional value
             "report-type::",        // Optional value
             "coverage-line-badge-name::", // Optional value
-            "coverage-branche-badge-name::", // Optional value
+            "coverage-branch-badge-name::", // Optional value
             "coverage-line-badge-width::", // Optional value
-            "coverage-branche-badge-width::", // Optional value
+            "coverage-branch-badge-width::", // Optional value
             "coverage-line-badge-path::", // Optional value
-            "coverage-branche-badge-path::", // Optional value
+            "coverage-branch-badge-path::", // Optional value
             "coverage-line-percent-ok::", // Optional value
             "coverage-branch-percent-ok::", // Optional value
         ];
 
         $options = getopt("", $longopts);
-        var_dump($options);
         $report = $options['report'] ?? 'clover.xml';
         $reportType = $options['report-type'] ?? 'clover';
         $coverageLineBadgeName = $options['coverage-line-badge-name'] ?? 'Line coverage';
-        $coverageBrancheBadgeName = $options['coverage-branche-badge-name'] ?? 'Branche coverage';
+        $coverageBranchBadgeName = $options['coverage-branch-badge-name'] ?? 'Branch coverage';
         $coverageLineBadgePath = $options['coverage-line-badge-path'] ?? 'coverage_line.svg';
-        $coverageBrancheBadgePath = $options['coverage-branche-badge-path'] ?? 'coverage_breanche.svg';
+        $coverageBranchBadgePath = $options['coverage-branch-badge-path'] ?? 'coverage_breanche.svg';
         $coverageLinePercentOk = floatval($options['coverage-line-percent-ok'] ?? '80');
         $coverageBranchPercentOk = floatval($options['coverage-branch-percent-ok'] ?? '70');
 
@@ -12092,11 +12088,11 @@ class Build
         );
 
         $this->buildBadge(
-            $coverageBrancheBadgeName,
+            $coverageBranchBadgeName,
             $metric->branchesCovered,
             $metric->branchesValid,
             $coverageBranchPercentOk,
-            $coverageBrancheBadgePath
+            $coverageBranchBadgePath
         );
     }
 }
