@@ -12064,6 +12064,7 @@ class Build
         ];
 
         $options = getopt("", $longopts);
+        var_dump($options);
         $report = $options['report'] ?? 'clover.xml';
         $reportType = $options['report-type'] ?? 'clover';
         $coverageLineBadgeName = $options['coverage-line-badge-name'] ?? 'line coverage';
