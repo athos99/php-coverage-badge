@@ -41,18 +41,6 @@ inputs:
     description: 'Defines whether the badges will be committed and pushed to the repository.'
     required: false
     default: 'false'
-  commit_message:
-    description: 'Commit message that will be used to commit.'
-    required: false
-    default: 'Update code coverages badges'
-  commit_email:
-    description: 'Email that will be used for the commit.'
-    required: false
-    default: 'actions@users.noreply.github.com'
-  repo_token:
-    description: 'Token to push the badge into the repository.'
-    required: false
-    default: 'NOT_SUPPLIED'
 runs:
   using: "composite"
   steps:
