@@ -11953,7 +11953,7 @@ class BuildException extends Exception {}
 class Build
 {
 
-    public static $template_svg = <<<EOT
+    public static $templateSvg = <<<EOT
         <svg xmlns="http://www.w3.org/2000/svg" width="{{ badgeWidth }}" height="20" role="img" aria-label="{{ name }}: {{ covergae}}">
         <linearGradient id="s" x2="0" y2="100%">
         <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
@@ -12040,7 +12040,7 @@ class Build
     {
         $coverage = (($valid === 0) ? 100.0 : number_format(($covered * 100) / $valid, 1, '.')) . '%';
         $color = $coverage >= $limit ? '#4c1' : '#e54';
-        $template = self::$template_svg;
+        $template = self::$templateSvg;
         $coverageLength = $this->calculateTextLength110($coverage);
         $nameTextLength = $this->calculateTextLength110($name);
         $rightWidth = ceil($coverageLength / 10) + 10;
