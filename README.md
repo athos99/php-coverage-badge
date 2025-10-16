@@ -15,7 +15,7 @@ and creates badges based on the coverage of lines and branches of the code.
 
 
 
-## How to use in you gtiaction yml file
+## How to use in you Github action yml file
 
 ```
    - name: clover report
@@ -48,8 +48,11 @@ Generated badges are not archived by default in your Git repository. You must ar
           force: true
 ```
 
-You can take inspiration from the *.github/workflows/test.yml* file to integrate php-covevrage-badge into your GitAction
+You can take inspiration from the [php-coverage-badge-test](https://github.com/athos99/php-coverage-badge-test) file to integrate php-covevrage-badge into your GitAction
 
+## last version
+
+v1
 
 ## Inputs
 

@@ -11979,8 +11979,6 @@ class Build
 
     private function getCloverMetrics(string $cloverMetricsPath): Metric
     {
-
-
         $xmlElement = new SimpleXMLElement(file_get_contents($cloverMetricsPath));
         $reportMetrics = $xmlElement->xPath('project/metrics')[0] ?? null;
         if ($reportMetrics === null) {
@@ -11998,7 +11996,6 @@ class Build
     private function getCoberturaMetric(string $coberturaMetricsPath): Metric
     {
         $xmlElement = new SimpleXMLElement(file_get_contents($coberturaMetricsPath));
-
         $metricsAttributes = $xmlElement->attributes() ?? null;
         if ($metricsAttributes === null) {
             throw new BuildException('Could not find metrics in cobertura report.');
