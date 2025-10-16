@@ -7,9 +7,9 @@ based on https://github.com/cicirello/jacoco-badge-generator
 
 
 ![badge](https://raw.githubusercontent.com/athos99/php-coverage-badge/refs/heads/main/test/clover_coverage_line.svg)
-![badge](https://raw.githubusercontent.com/athos99/php-coverage-badge/refs/heads/main/test/clover_coverage_branche.svg)
+![badge](https://raw.githubusercontent.com/athos99/php-coverage-badge/refs/heads/main/test/clover_coverage_branch.svg)
 ![badge](https://raw.githubusercontent.com/athos99/php-coverage-badge/refs/heads/main/test/cobertura_coverage_line.svg)
-![badge](https://raw.githubusercontent.com/athos99/php-coverage-badge/refs/heads/main/test/cobertura_coverage_branche.svg)
+![badge](https://raw.githubusercontent.com/athos99/php-coverage-badge/refs/heads/main/test/cobertura_coverage_branch.svg)
 
 
 https://github.com/JASchilz/PHPCoverageBadge/blob/master/coverage-badger.php
