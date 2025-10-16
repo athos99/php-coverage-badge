@@ -47,6 +47,7 @@ runs:
 
     - name: liste files 1
       run: ls -laR
+      shell: bash
 
   
     - name: Checkout
@@ -57,6 +58,7 @@ runs:
 
     - name: liste files 2
       run: ls -laR
+      shell: bash
 
 
     - name: Setup PHP with tools
@@ -67,6 +69,7 @@ runs:
     
     - name: liste files 3
       run: ls -laR
+      shell: bash
     
     
     - name: build badge
