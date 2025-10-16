@@ -12046,6 +12046,10 @@ class Build
 
     public function run()
     {
+        global $argv;
+        
+        var_dump($argv);
+
         $longopts  = [
             "report::",             // Optional value
             "report-type::",        // Optional value
