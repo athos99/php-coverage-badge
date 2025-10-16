@@ -37,14 +37,21 @@ on:
 
 permissions:
   pull-requests: read # allows SonarCloud to decorate PRs with analysis results
+  actions: read
 
 jobs:
   Analysis:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Analyze with SonarCloud
 
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
+          fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.        
+
+      - name: Analyze with SonarCloud
         # You can pin the exact commit or the version.
         # uses: SonarSource/sonarcloud-github-action@v2.2.0
         uses: SonarSource/sonarcloud-github-action@4006f663ecaf1f8093e8e4abb9227f6041f52216
