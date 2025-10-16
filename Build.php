@@ -12063,8 +12063,8 @@ class Build
         var_dump($options);
         $report = $options['report'] ?? 'clover.xml';
         $reportType = $options['report-type'] ?? 'clover';
-        $coverageLineBadgeName = $options['coverage-line-badge-name'] ?? 'line coverage';
-        $coverageBrancheBadgeName = $options['coverage-branche-badge-name'] ?? 'branche coverage';
+        $coverageLineBadgeName = $options['coverage-line-badge-name'] ?? 'Line coverage';
+        $coverageBrancheBadgeName = $options['coverage-branche-badge-name'] ?? 'Branche coverage';
         $coverageLineBadgePath = $options['coverage-line-badge-path'] ?? 'coverage_line.svg';
         $coverageBrancheBadgePath = $options['coverage-branche-badge-path'] ?? 'coverage_breanche.svg';
         $coverageLinePercentOk = floatval($options['coverage-line-percent-ok'] ?? '80');
