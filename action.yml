@@ -43,10 +43,6 @@ inputs:
     default: 'false'
 runs:
   using: "composite"
-  permissions:
-    pull-requests: write
-    contents: write           
-  runs-on: ubuntu-latest
   steps:
     - name: Checkout
       uses: actions/checkout@v5
