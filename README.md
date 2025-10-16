@@ -54,6 +54,12 @@ You can take inspiration from the [php-coverage-badge-test](https://github.com/a
 
 v1
 
+## how to add the badges in markdown file
+```
+![badge](https://raw.githubusercontent.com/athos99/php-coverage-badge/refs/heads/main/test/clover_coverage_line.svg)
+```
+
+
 ## Inputs
 
 Paths are always relative to the root of your repository.
