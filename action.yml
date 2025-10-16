@@ -72,21 +72,13 @@ runs:
         INPUT_COVERAGE_BRANCHE_BADGE_PATH: "${{ inputs.coverage_line_badge_path }}"
         INPUT_COVERAGE_LINE_PERCENT_OK: "${{    inputs.coverage_line_percent_ok }}"
         INPUT_COVERAGE_BRANCH_PERCENT_OK: "${{ inputs.coverage_branch_percent_ok }}"
-        INPUT_PUSH_BADGE: "${{ inputs.push_badge }}"
-        INPUT_REPO_TOKEN: "${{ inputs.repo_token }}"
-        INPUT_COMMIT_MESSAGE: "${{ inputs.commit_message }}"
-        INPUT_COMMIT_EMAIL: "${{ inputs.commit_email }}"       
       run: |
-        php Build.php --report=$INPUT_REPORT \
-          --report-type=$INPUT_REPORT_TYPE \
-          --coverage-line-badge-name=$INPUT_COVERAGE_LINE_BADGE_NAME\
-          --coverage-branche-badge-name=$INPUT_COVERAGE_BRANCHE_BADGE_NAME \
-          --coverage-line-badge-path=$INPUT_COVERAGE_LINE_BADGE_PATH \
-          --coverage-branche-badge-path=$INPUT_COVERAGE_BRANCHE_BADGE_PATH \
-          --coverage-line-percent-ok=${INPUT_COVERAGE_LINE_PERCENT_OK} \
-          --coverage-branch-percent-ok=${INPUT_COVERAGE_BRANCH_PERCENT_OK} \
-          --push-badge=${INPUT_PUSH_BADGE} \
-          --repo-token=${INPUT_REPO_TOKEN} \
-          --commit-message=${INPUT_COMMIT_MESSAGE} \
-          --commit-email=${INPUT_COMMIT_EMAIL}
+        php Build.php --report="$INPUT_REPORT" \
+          --report-type="$INPUT_REPORT_TYPE" \
+          --coverage-line-badge-name="$INPUT_COVERAGE_LINE_BADGE_NAME\
+          --coverage-branche-badge-name="$INPUT_COVERAGE_BRANCHE_BADGE_NAME" \
+          --coverage-line-badge-path="$INPUT_COVERAGE_LINE_BADGE_PATH" \
+          --coverage-branche-badge-path="$INPUT_COVERAGE_BRANCHE_BADGE_PATH" \
+          --coverage-line-percent-ok="${INPUT_COVERAGE_LINE_PERCENT_OK}" \
+          --coverage-branch-percent-ok="${INPUT_COVERAGE_BRANCH_PERCENT_OK}" \
 
