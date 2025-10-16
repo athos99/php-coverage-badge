@@ -69,7 +69,7 @@ runs:
         INPUT_COVERAGE_LINE_BADGE_NAME: "${{ inputs.coverage_line_badge_name }}"
         INPUT_COVERAGE_BRANCHE_BADGE_NAME: "${{ inputs.coverage_branche_badge_name }}"
         INPUT_COVERAGE_LINE_BADGE_PATH: "${{ inputs.coverage_line_badge_path }}"
-        INPUT_COVERAGE_BRANCHE_BADGE_PATH: "${{ inputs.coverage_line_badge_path }}"
+        INPUT_COVERAGE_BRANCHE_BADGE_PATH: "${{ inputs.coverage_branch_badge_path }}"
         INPUT_COVERAGE_LINE_PERCENT_OK: "${{    inputs.coverage_line_percent_ok }}"
         INPUT_COVERAGE_BRANCH_PERCENT_OK: "${{ inputs.coverage_branch_percent_ok }}"
       run: |
