@@ -44,17 +44,31 @@ inputs:
 runs:
   using: "composite"
   steps:
+
+    - name: liste files 1
+      run: ls -laR
+
+  
     - name: Checkout
       uses: actions/checkout@v5
       with:
         persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
         fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.        
 
+    - name: liste files 2
+      run: ls -laR
+
+
     - name: Setup PHP with tools
       uses: shivammathur/setup-php@v2
       with:
         php-version: '8.3'
         extensions: mbstring, xml
+    
+    - name: liste files 3
+      run: ls -laR
+    
+    
     - name: build badge
       shell: bash
       env:
