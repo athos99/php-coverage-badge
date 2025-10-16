@@ -11948,12 +11948,34 @@ class Metric
     public int $linesCovered;
 }
 
-class BuildException extends Exception
-{
-}
+class BuildException extends Exception {}
 
 class Build
 {
+
+    public static $template_svg = <<<EOT
+        <svg xmlns="http://www.w3.org/2000/svg" width="{{ badgeWidth }}" height="20" role="img" aria-label="{{ name }}: {{ covergae}}">
+        <linearGradient id="s" x2="0" y2="100%">
+        <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
+        <stop offset="1" stop-opacity=".1"/>
+        </linearGradient>
+        <clipPath id="r">
+        <rect width="{{ badgeWidth }}" height="20" rx="3" fill="#fff"/>
+        </clipPath>
+        <g clip-path="url(#r)"><rect width="{{ leftWidth }}" height="20" fill="#555"/>
+        <rect x="{{ leftWidth }}" width="{{ rightWidth }}" height="20" fill="{{ color }}"/>
+        <rect width="{{ badgeWidth }}" height="20" fill="url(#s)"/>
+        </g>
+        <g fill="#fff" text-anchor="middle" font-family="Verdana,Geneva,DejaVu Sans,sans-serif" text-rendering="geometricPrecision" font-size="110">
+        <text aria-hidden="true" x="{{ leftCenter }}" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="{{ nameTextLength }}">{{ name }}</text>
+        <text x="{{ leftCenter }}" y="140" transform="scale(.1)" fill="#fff" textLength="{{ nameTextLength }}">{{ name }}</text>
+        <text aria-hidden="true" x="{{ rightCenter }}" y="150" fill="#010101" fill-opacity=".3" transform="scale(.1)" textLength="{{ coverageLength }}">{{ coverage }}</text>
+        <text x="{{ rightCenter }}" y="140" transform="scale(.1)" fill="#fff" textLength="{{ coverageLength }}">{{ coverage }}</text>
+        </g>
+        </svg>
+        EOT;
+
+
 
     private function getCloverMetrics(string $cloverMetricsPath): Metric
     {
@@ -12021,7 +12043,7 @@ class Build
     {
         $coverage = (($valid === 0) ? 100.0 : number_format(($covered * 100) / $valid, 1, '.')) . '%';
         $color = $coverage >= $limit ? '#4c1' : '#e54';
-        $template = file_get_contents('template.svg');
+        $template = self::$template_svg;
         $coverageLength = $this->calculateTextLength110($coverage);
         $nameTextLength = $this->calculateTextLength110($name);
         $rightWidth = ceil($coverageLength / 10) + 10;
