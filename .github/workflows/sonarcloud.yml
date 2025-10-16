@@ -58,5 +58,9 @@ jobs:
             # mandatory
             -Dsonar.projectKey=athos99_php-coverage-badge
             -Dsonar.organization=athos99
+            -Dsonar.scm.disabled=true
+            -Dsonar.scm.provider=git
+            -Dsonar.language=php
+            # Encoding of the source code            
 
 
