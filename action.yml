@@ -53,6 +53,7 @@ runs:
         path: php-coverage-badge
         sparse-checkout: |
           Build.php
+        sparse-checkout-cone-mode: false  
 
     - name: Setup PHP with tools
       uses: shivammathur/setup-php@v2
