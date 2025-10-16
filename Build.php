@@ -12057,10 +12057,6 @@ class Build
             "coverage-branche-badge-path::", // Optional value
             "coverage-line-percent-ok::", // Optional value
             "coverage-branch-percent-ok::", // Optional value
-            "push-badge::",         // Optional value
-            "repo-token::",         // Optional value
-            "commit-message::",     // Optional value
-            "commit-email::",       // Optional value
         ];
 
         $options = getopt("", $longopts);
@@ -12073,10 +12069,6 @@ class Build
         $coverageBrancheBadgePath = $options['coverage-branche-badge-path'] ?? 'coverage_breanche.svg';
         $coverageLinePercentOk = floatval($options['coverage-line-percent-ok'] ?? '80');
         $coverageBranchPercentOk = floatval($options['coverage-branch-percent-ok'] ?? '70');
-        $pushBadge = filter_var($options['push-badge'] ?? 'false', FILTER_VALIDATE_BOOLEAN);
-        $repoToken = $options['repo-token'] ?? '';
-        $commitMessage = $options['commit-message'] ?? 'Update coverage badges';
-        $commitEmail = $options['commit-email'] ?? 'github-actions@users.noreply.github.com';
 
         if ($reportType === 'clover') {
             $metric = $this->getCloverMetrics($report);
