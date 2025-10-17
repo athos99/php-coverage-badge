@@ -35,8 +35,8 @@ jobs:
 
 
       - name: archive
-        run: git config --local user.name actions-user
-      - run: git config --local user.email "actions@github.com" 
+        run: git config --local user.name "github-actions[bot]"
+      - run: git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com" 
       - run: git add test/clover_coverage_line.svg
       - run: git add test/clover_coverage_branch.svg
       - run: git add test/cobertura_coverage_line.svg
@@ -48,6 +48,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           force: true
+          branch: ${{ github.ref }}
 
   
 
