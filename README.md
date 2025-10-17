@@ -35,8 +35,8 @@ Generated badges are not archived by default in your Git repository. You must ar
 
 ```
     - name: archive
-        run: git config --local user.name actions-user
-      - run: git config --local user.email "actions@github.com" 
+        run: git config --local user.name "github-actions[bot]"
+      - run: git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com" 
       - run: git add out/coverage_line.svg
       - run: git add out/coverage_branch.svg
       - run: 'git commit -m "chore: add coverage badges"  || true'
@@ -46,6 +46,7 @@ Generated badges are not archived by default in your Git repository. You must ar
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           force: true
+          branch: ${{ github.ref }}
 ```
 
 You can take inspiration from the [php-coverage-badge-test](https://github.com/athos99/php-coverage-badge-test) file to integrate php-covevrage-badge into your GitAction
