@@ -12038,10 +12038,11 @@ class Build
 
     private function buildBadge(string $name,  int $covered, int $valid, float $limit, string $outputFile): void
     {
-        $coverage = (($valid === 0) ? 100.0 : number_format(($covered * 100) / $valid, 1, '.')) . '%';
+        $coverage = (($valid === 0) ? 100.0 : number_format(($covered * 100) / $valid, 1, '.'));
         $color = $coverage >= $limit ? '#4c1' : '#e54';
         $template = self::$templateSvg;
-        $coverageLength = $this->calculateTextLength110($coverage);
+        $coverageText = $coverage . '%';
+        $coverageLength = $this->calculateTextLength110($coverageText);
         $nameTextLength = $this->calculateTextLength110($name);
         $rightWidth = ceil($coverageLength / 10) + 10;
         $leftWidth = ceil($nameTextLength / 10) + 10;
@@ -12052,7 +12053,7 @@ class Build
         $leftCenter = 10 + $leftWidth * 5;
         $template = str_replace('{{ name }}', $name, $template);
         $template = str_replace('{{ nameTextLength }}', $nameTextLength, $template);
-        $template = str_replace('{{ coverage }}', $coverage, $template);
+        $template = str_replace('{{ coverage }}', $coverageText, $template);
         $template = str_replace('{{ coverageLength }}', $coverageLength, $template);
         $template = str_replace('{{ color }}', $color, $template);
         $template = str_replace('{{ rightWidth }}', $rightWidth, $template);
@@ -12096,7 +12097,7 @@ class Build
         } else {
             throw new BuildException('Report type not supported: ' . $reportType);
         }
-
+var_dump($metric);
 
         $this->buildBadge(
             $coverageLineBadgeName,
